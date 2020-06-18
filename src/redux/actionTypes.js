@@ -1,0 +1,10 @@
+
+// auth
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_ERROR = "LOGIN_ERROR";
+export const LOGOUT = "LOGOUT";
+
+// signup
+export const REGISTER_REQUEST = 'USERS_REGISTER_REQUEST';
+export const REGISTER_SUCCESS = 'USERS_REGISTER_SUCCESS';
+export const REGISTER_FAILURE = 'USERS_REGISTER_FAILURE';

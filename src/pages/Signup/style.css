@@ -1,0 +1,9 @@
+.form-group{
+    text-align: left;
+}
+
+.help-block{
+    display: inline-block;
+    margin-left: 10px;
+    color: #f00;
+}

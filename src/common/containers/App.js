@@ -4,7 +4,6 @@ import Signup from '../../pages/Signup';
 import Login from '../../pages/Login';
 import Home from '../../pages/Home';
 import Search from '../../pages/Search';
-import SearchDetail from '../../pages/SearchDetail';
 import BookDetail from '../../pages/BookDetail';
 import Targets from '../../pages/Targets';
 import MyBooks from '../../pages/MyBooks';
@@ -21,7 +20,6 @@ export default class App extends Component {
         <Router>
             <Navbar />
             <Switch>
-              <Route path="/search-detail/:query" component={SearchDetail} />
               <Route path="/book-detail/:bookId" component={BookDetail} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />

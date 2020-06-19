@@ -1,0 +1,31 @@
+.book-wrapper{
+    -webkit-box-shadow: 0 1px 15px 0px rgba(0,0,0,0.3) !important;
+    box-shadow: 0 1px 15px 0px rgba(0,0,0,0.3) !important;
+
+    background-color:#fff;
+    padding:15px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.book-detail-div{
+    max-width:800px !important;
+}
+
+.book-detail-feature{
+    padding: 15px;
+    font-size: 17px;
+    width: 150px;
+}
+
+.feature-author{
+    background-color: #2196F3;
+}
+
+.feature-page{
+    background-color: #4CAF50;
+}
+
+.book-description{
+    font-size: 18px;
+}

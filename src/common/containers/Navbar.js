@@ -11,7 +11,7 @@ class Navbar extends Component {
     const activeItem = this.props.location.pathname.split("/")[1];
     
     return (
-        <Menu inverted pointing>
+        <Menu inverted pointing size='large'>
             <Menu.Item as={Link} to="/home" name='home' active={activeItem === 'home'}>
                 <Icon name='home' />Home
             </Menu.Item>

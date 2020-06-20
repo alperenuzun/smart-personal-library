@@ -7,6 +7,7 @@ import Search from '../../pages/Search';
 import BookDetail from '../../pages/BookDetail';
 import Targets from '../../pages/Targets';
 import MyBooks from '../../pages/MyBooks';
+import ReadingDetail from '../../pages/ReadingDetail';
 import Profile from '../../pages/Profile';
 import NoMatch from '../../pages/NoMatch';
 import Navbar from './Navbar';
@@ -21,6 +22,7 @@ export default class App extends Component {
             <Navbar />
             <Switch>
               <Route path="/book-detail/:bookId" component={BookDetail} />
+              <Route path="/reading-detail/:readingId" component={ReadingDetail} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/targets" component={Targets} />

@@ -1,0 +1,13 @@
+.book-wrapper{
+    -webkit-box-shadow: 0 1px 15px 0px rgba(0,0,0,0.3) !important;
+    box-shadow: 0 1px 15px 0px rgba(0,0,0,0.3) !important;
+
+    background-color:#fff;
+    padding:15px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.book-detail-div{/* container divi max width verip grafiği de bu boyutta yapabiliriz */
+    max-width:800px !important;
+}

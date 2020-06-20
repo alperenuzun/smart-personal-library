@@ -41,7 +41,7 @@ const BookList = ({ books }) => {
   return books && books.length ? (
     <Grid columns={3} stackable padded='vertically'>
       {books.map((book, index) => {
-        return <Book book={book} idx={index} key={index} />;
+        return <Book book={book} key={index} />;
       })}
     </Grid>
   ) : (<div className="center">No books to show</div>);

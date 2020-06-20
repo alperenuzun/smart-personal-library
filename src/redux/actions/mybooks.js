@@ -5,7 +5,8 @@ import {
     FETCH_MYBOOKS_FAILURE,
     FETCH_READING_BEGIN,
     FETCH_READING_SUCCESS,
-    FETCH_READING_FAILURE
+    FETCH_READING_FAILURE,
+    SET_READING_STATUS
 } from '../actionTypes'
 
 export const fetchBookBegin = () => ({
@@ -32,6 +33,21 @@ export const fetchMyBooks = (user, status) => {
         }).catch(error =>
             dispatch(fetchBookFailure(error))
         );
+    };
+}
+
+const setReadingStatusSuccess = bookId => ({
+    type: SET_READING_STATUS,
+    payload: {bookId: bookId}
+});
+
+export const setReadingStatus = (user,bookId,status) => {
+    return dispatch => {
+      return axios.get("http://localhost/smartlib/setBookStatus.php?u="+user+"&bId="+bookId+"&s="+status)
+      .then(json => {
+        dispatch(setReadingStatusSuccess(bookId));
+        return json.data.success;
+      });
     };
 }
 

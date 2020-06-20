@@ -22,15 +22,18 @@ class MyBooks extends Component{
         const panes = [
             {
                 menuItem: 'Will Read',
-                render: () => <MyBooksTab books={books} error={error} loading={loading} />
+                render: () => <MyBooksTab books={books} type={1} error={error} 
+                     user={user} loading={loading} />
             },
             {
                 menuItem: 'Is Reading',
-                render: () => <MyBooksTab books={books} error={error} loading={loading} />
+                render: () => <MyBooksTab books={books} type={2} error={error} 
+                    user={user} loading={loading} />
             },
             {
                 menuItem: 'Was Read',
-                render: () => <MyBooksTab books={books} error={error} loading={loading} />
+                render: () => <MyBooksTab books={books} type={3} error={error} 
+                    user={user} loading={loading} />
             }
         ]
 
@@ -58,7 +61,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchMyBooks: (user, status) => dispatch(fetchMyBooks(user,status))
+    fetchMyBooks: (user, status) => dispatch(fetchMyBooks(user, status))
   }
 }
 

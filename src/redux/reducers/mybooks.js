@@ -1,7 +1,8 @@
 import {
     FETCH_MYBOOKS_BEGIN,
     FETCH_MYBOOKS_SUCCESS,
-    FETCH_MYBOOKS_FAILURE
+    FETCH_MYBOOKS_FAILURE,
+    SET_READING_STATUS
 } from "../actionTypes";
 
 const initialState = {
@@ -32,6 +33,12 @@ export default function mybooks(state = initialState, action) {
                 loading: false,
                 error: action.payload.error,
                 items: []
+            };
+
+        case SET_READING_STATUS:
+            return {
+                ...state,
+                items: state.items.filter((item) => item.id !== action.payload.bookId)
             };
 
         default:

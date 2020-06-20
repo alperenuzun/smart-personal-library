@@ -1,23 +1,9 @@
 import React from 'react'
-import { Table, Tab, Image, Header } from 'semantic-ui-react'
-import { Link } from "react-router-dom";
+import { Table, Tab } from 'semantic-ui-react'
 import '../style.css'
+import BookRow from '../containers/BookRow'
 
-const BookRow = ({ book }) => (
-    <Table.Row>
-        <Table.Cell>
-            <Image as={Link} to={`/reading-detail/${book.id}`}
-                className="mybooks-img" src={`/images/books/${book.img}`} 
-            />
-        </Table.Cell>
-        <Table.Cell><Header size='small' as={Link} to={`/reading-detail/${book.id}`}>{book.name}</Header></Table.Cell>
-        <Table.Cell>{book.datetime}</Table.Cell>
-        <Table.Cell>{book.page}</Table.Cell>
-    </Table.Row>
-)
-
-const MyBooksTab = ({loading, error, books}) => {
-
+const MyBooksTab = ({loading, error, books, type, user, onStatusChange}) => {
     if (error)
       return (<Tab.Pane>Error! {error.message}</Tab.Pane>);
 
@@ -31,11 +17,14 @@ const MyBooksTab = ({loading, error, books}) => {
                       <Table.HeaderCell>Book Name</Table.HeaderCell>
                       <Table.HeaderCell>Datetime</Table.HeaderCell>
                       <Table.HeaderCell>Page</Table.HeaderCell>
+                      <Table.HeaderCell>Status</Table.HeaderCell>
                   </Table.Row>
               </Table.Header>
               <Table.Body>
                   {books.map((book, index) => {
-                    return <BookRow book={book} key={index} />;
+                    return <BookRow book={book} onStatusChange={onStatusChange} 
+                                type={String(type)} user={user} key={index}
+                            />;
                   })}
               </Table.Body>
           </Table>

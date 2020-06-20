@@ -11,9 +11,10 @@ class Navbar extends Component {
     const activeItem = this.props.location.pathname.split("/")[1];
     
     return (
-        <Menu inverted pointing size='large'>
+        <Menu icon='labeled' inverted stackable size='small'>
             <Menu.Item as={Link} to="/home" name='home' active={activeItem === 'home'}>
-                <Icon name='home' />Home
+                <Icon name='home' />
+                Home
             </Menu.Item>
             <Menu.Item as={Link} to="/mybooks" name='mybooks' active={activeItem === 'mybooks'}>
                 <Icon name='book' />My Books
@@ -30,8 +31,13 @@ class Navbar extends Component {
                     <Icon name='user' />Profile
                 </Menu.Item>
               { (user.length !== 0 && user !== "" && user !== undefined) ? 
-                <Menu.Item as={Link} to="/login">Logout - { user }</Menu.Item>
-                : <Menu.Item as={Link} to="/login" active={activeItem === 'login'}>Login</Menu.Item>
+                <Menu.Item as={Link} to="/login">
+                    <Icon name='sign-out' />Logout - { user }
+                </Menu.Item>
+                : 
+                <Menu.Item as={Link} to="/login" active={activeItem === 'login'}>
+                    <Icon name='sign-in' />Login
+                </Menu.Item>
               }
             </Menu.Menu>
         </Menu>

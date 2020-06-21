@@ -23,11 +23,11 @@ class Book extends Component {
         return <div style={{marginTop:'5em'}}>Loading Book Details...</div>;
     }
 
-    const statusOptions = [
+    /* const statusOptions = [
         { key: '1', value: '1', text: 'Will Read' },
         { key: '2', value: '2', text: 'Is Reading' },
         { key: '3', value: '3', text: 'Was Read' }
-    ]
+    ] */
     
     return book && book.id ? (
       <Grid padded columns={1}>

@@ -79,7 +79,7 @@ const mapStateToProps = state => {
         readingVals: state.readingDetail.readingValues,
         loading: state.readingDetail.loading,
         error: state.readingDetail.error,
-        user: token ? jwtDecode(token) : state.auth.user,
+        user: token ? jwtDecode(token) : state.auth.user
     };
 }
 

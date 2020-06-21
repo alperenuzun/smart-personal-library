@@ -10,6 +10,8 @@ import MyBooks from '../../pages/MyBooks';
 import ReadingDetail from '../../pages/ReadingDetail';
 import Profile from '../../pages/Profile';
 import NoMatch from '../../pages/NoMatch';
+import Sentences from '../../pages/Sentences';
+import Notes from '../../pages/Notes';
 import Navbar from './Navbar';
 
 export default class App extends Component {
@@ -23,6 +25,8 @@ export default class App extends Component {
             <Switch>
               <Route path="/book-detail/:bookId" component={BookDetail} />
               <Route path="/reading-detail/:readingId" component={ReadingDetail} />
+              <Route path="/notes" component={Notes} />
+              <Route path="/sentences" component={Sentences} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/targets" component={Targets} />

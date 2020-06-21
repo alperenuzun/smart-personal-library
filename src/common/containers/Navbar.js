@@ -25,6 +25,12 @@ class Navbar extends Component {
             <Menu.Item as={Link} to="/search" name='search' active={activeItem === 'search'}>
                 <Icon name='search' />Search
             </Menu.Item>
+            <Menu.Item as={Link} to="/sentences" name='sentences' active={activeItem === 'sentences'}>
+                <Icon name='heart' />Sentences
+            </Menu.Item>
+            <Menu.Item as={Link} to="/notes" name='sentences' active={activeItem === 'notes'}>
+                <Icon name='bookmark' />Notes
+            </Menu.Item>
 
             <Menu.Menu position='right' style={{padding: '7px 0'}}>
                 <Menu.Item as={Link} to="/profile" name='profile' active={activeItem === 'profile'}>

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import { Table, Image, Header, Dropdown } from 'semantic-ui-react'
+import { Table, Image, Header, Dropdown, Button, Icon } from 'semantic-ui-react'
 
-const BookRow = ({ book, setReadingStatus, user, type }) => {
+const BookRow = ({ book, setReadingStatus, user, type, removeReading }) => {
     const statusOptions = [
         { key: '1', value: '1', text: 'Will Read' },
         { key: '2', value: '2', text: 'Is Reading' },
@@ -21,8 +21,13 @@ const BookRow = ({ book, setReadingStatus, user, type }) => {
             <Table.Cell>{book.page}</Table.Cell>
             <Table.Cell>
                 <Dropdown placeholder='Set Status' value={type}  options={statusOptions}
-                    onChange={(e,{value})=>setReadingStatus(user,book.id,value)} selection
+                    onChange={(e,{value})=>setReadingStatus(user,book.bookId,value)} selection
                 />
+            </Table.Cell>
+            <Table.Cell>
+                <Button onClick={() => removeReading(user,book.bookId)} icon color="red">
+                    <Icon name='remove' />
+                </Button>
             </Table.Cell>
         </Table.Row>
     )

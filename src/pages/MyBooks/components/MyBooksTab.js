@@ -18,6 +18,7 @@ const MyBooksTab = ({loading, error, books, type, user, onStatusChange}) => {
                       <Table.HeaderCell>Datetime</Table.HeaderCell>
                       <Table.HeaderCell>Page</Table.HeaderCell>
                       <Table.HeaderCell>Status</Table.HeaderCell>
+                      <Table.HeaderCell></Table.HeaderCell>
                   </Table.Row>
               </Table.Header>
               <Table.Body>

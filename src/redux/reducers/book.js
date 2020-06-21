@@ -1,13 +1,15 @@
 import {
     FETCH_BOOK_BEGIN,
     FETCH_BOOK_SUCCESS,
-    FETCH_BOOK_FAILURE
+    FETCH_BOOK_FAILURE,
+    ADD_READING
 } from "../actionTypes";
 
 const initialState = {
     item: {},
     loading: false,
-    error: null
+    error: null,
+    inMyBooks: false
 };
 
 export default function book(
@@ -26,7 +28,8 @@ export default function book(
             return {
                 ...state,
                 loading: false,
-                item: action.payload.item
+                item: action.payload.item,
+                inMyBooks: action.payload.item.inMyBooks
             };
 
         case FETCH_BOOK_FAILURE:
@@ -35,6 +38,12 @@ export default function book(
                 loading: false,
                 error: action.payload.error,
                 item: []
+            };
+
+        case ADD_READING:
+            return {
+                ...state,
+                inMyBooks: true
             };
 
         default:

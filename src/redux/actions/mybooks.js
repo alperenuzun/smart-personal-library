@@ -6,7 +6,9 @@ import {
     FETCH_READING_BEGIN,
     FETCH_READING_SUCCESS,
     FETCH_READING_FAILURE,
-    SET_READING_STATUS
+    SET_READING_STATUS,
+    REMOVE_READING,
+    ADD_READING
 } from '../actionTypes'
 
 export const fetchBookBegin = () => ({
@@ -46,6 +48,36 @@ export const setReadingStatus = (user,bookId,status) => {
       return axios.get("http://localhost/smartlib/setBookStatus.php?u="+user+"&bId="+bookId+"&s="+status)
       .then(json => {
         dispatch(setReadingStatusSuccess(bookId));
+        return json.data.success;
+      });
+    };
+}
+
+const removeReadingSuccess = bookId => ({
+    type: REMOVE_READING,
+    payload: {bookId: bookId}
+});
+
+export const removeReading = (user,bookId) => {
+    return dispatch => {
+      return axios.get("http://localhost/smartlib/removeReading.php?u="+user+"&bId="+bookId)
+      .then(json => {
+        dispatch(removeReadingSuccess(bookId));
+        return json.data.success;
+      });
+    };
+}
+
+const addReadingSuccess = bookId => ({
+    type: ADD_READING,
+    payload: {bookId: bookId}
+});
+
+export const addReading = (user,bookId,status) => {
+    return dispatch => {
+      return axios.get("http://localhost/smartlib/addReading.php?u="+user+"&bId="+bookId+"&s="+status)
+      .then(json => {
+        dispatch(addReadingSuccess(bookId));
         return json.data.success;
       });
     };

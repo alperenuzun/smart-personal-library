@@ -10,7 +10,7 @@ const Book = ({ book }) => {
           <Item.Image as={Link} to={`/book-detail/${book.id}`} size='small' src={`/images/books/${book.img}`} />
 
           <Item.Content>
-            <Item.Header as='a'>{book.name}</Item.Header>
+            <Item.Header as={Link} to={`/book-detail/${book.id}`}>{book.name}</Item.Header>
                 <Item.Meta>{book.category}</Item.Meta>
             <Item.Description>
                 <Grid stackable columns={1}>

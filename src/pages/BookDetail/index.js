@@ -1,18 +1,20 @@
 import React,{Component} from "react";
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
-import { Item, Grid, Header } from 'semantic-ui-react'
+import jwtDecode from 'jwt-decode'
+import { Item, Grid, Header, Button, Icon } from 'semantic-ui-react'
 import './style.css'
 import {fetchBookDetail} from '../../redux/actions/books'
+import {addReading} from '../../redux/actions/mybooks'
 
 class Book extends Component {
   constructor(props){
     super(props);
-    props.fetchBookDetail(props.match.params.bookId);
+    props.fetchBookDetail(props.match.params.bookId, props.user);
   }
 
   render(){
-    const { error, loading, book } = this.props;
+    const { error, loading, book, addReading, user, inMyBooks } = this.props;
     if (error) {
         return <div style={{marginTop:'5em'}}>Error! {error.message}</div>;
     }
@@ -20,6 +22,12 @@ class Book extends Component {
     if (loading) {
         return <div style={{marginTop:'5em'}}>Loading Book Details...</div>;
     }
+
+    const statusOptions = [
+        { key: '1', value: '1', text: 'Will Read' },
+        { key: '2', value: '2', text: 'Is Reading' },
+        { key: '3', value: '3', text: 'Was Read' }
+    ]
     
     return book && book.id ? (
       <Grid padded columns={1}>
@@ -48,6 +56,19 @@ class Book extends Component {
                           </div>
                         </Grid.Column>
                     </Grid>
+                    <Grid>
+                        <Grid.Column>
+                            {!inMyBooks ? 
+                                <Button
+                                    onClick={() => addReading(user,book.id,"1")} 
+                                    icon color="blue"
+                                >
+                                    <Icon name='add' /> Add My Books
+                                </Button>
+                                : null
+                            }
+                        </Grid.Column>
+                    </Grid>
                 </Item.Description>
               </Item.Content>
             </Item>
@@ -66,16 +87,20 @@ class Book extends Component {
 }
 
 const mapStateToProps = state => {
+  const token = localStorage.getItem("jwtToken");
   return {
+      user: token ? jwtDecode(token) : state.auth.user,
       book: state.book.item,
       loading: state.book.loading,
-      error: state.book.error
+      error: state.book.error,
+      inMyBooks: state.book.inMyBooks
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      fetchBookDetail: (id) => dispatch(fetchBookDetail(id))
+      fetchBookDetail: (id, user) => dispatch(fetchBookDetail(id, user)),
+      addReading: (user, bookId, status) => dispatch(addReading(user, bookId, status))
   }
 }
 

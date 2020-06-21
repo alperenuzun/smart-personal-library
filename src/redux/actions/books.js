@@ -67,10 +67,10 @@ export const fetchBooks = (booksOfState, searchTerm = "") => {
   };
 }
 
-export const fetchBookDetail = (bookId) => {
+export const fetchBookDetail = (bookId, user) => {
     return dispatch => {
       dispatch(fetchBookBegin());
-      return axios.get("http://localhost/smartlib/getBookDetail.php?bId="+bookId).then(json => {
+      return axios.get("http://localhost/smartlib/getBookDetail.php?bId="+bookId+"&u="+user).then(json => {
         dispatch(fetchBookSuccess(json.data.book));
         return json.data.book;
       }).catch(error =>

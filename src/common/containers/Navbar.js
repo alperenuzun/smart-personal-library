@@ -31,6 +31,9 @@ class Navbar extends Component {
             <Menu.Item as={Link} to="/notes" name='sentences' active={activeItem === 'notes'}>
                 <Icon name='bookmark' />Notes
             </Menu.Item>
+            <Menu.Item as={Link} to="/userreading" name='userreading' active={activeItem === 'userreading'}>
+                <Icon name='bookmark' />My Reading
+            </Menu.Item>
 
             <Menu.Menu position='right' style={{padding: '7px 0'}}>
                 <Menu.Item as={Link} to="/profile" name='profile' active={activeItem === 'profile'}>

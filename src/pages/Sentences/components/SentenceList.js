@@ -1,17 +1,17 @@
 import React from "react";
 import { Table } from 'semantic-ui-react'
-import NoteRow from '../containers/NoteRow'
+import SentenceRow from '../containers/SentenceRow'
 
-const NoteList = ({notes}) => {
+const SentenceList = ({sentences}) => {
 
-    if(notes && notes.length){
+    if(sentences && sentences.length){
         return (
           <Table basic='very'>
               <Table.Header>
                   <Table.Row>
                       <Table.HeaderCell>Title</Table.HeaderCell>
                       <Table.HeaderCell>Book Name</Table.HeaderCell>
-                      <Table.HeaderCell>Note</Table.HeaderCell>
+                      <Table.HeaderCell>Sentence</Table.HeaderCell>
                       <Table.HeaderCell>Datetime</Table.HeaderCell>
                       <Table.HeaderCell>Page</Table.HeaderCell>
                       <Table.HeaderCell>Label</Table.HeaderCell>
@@ -19,15 +19,15 @@ const NoteList = ({notes}) => {
                   </Table.Row>
               </Table.Header>
               <Table.Body>
-                  {notes.map((note, index) => {
-                    return <NoteRow note={note} key={index} />;
+                  {sentences.map((sentence, index) => {
+                    return <SentenceRow sentence={sentence} key={index} />;
                   })}
               </Table.Body>
           </Table>
         )
     }
 
-    return (<div>There is no notes yet!</div>)
+    return (<div>There is no sentences yet!</div>)
 }
 
-export default NoteList
+export default SentenceList

@@ -6,6 +6,7 @@ import book from './book'
 import mybooks from './mybooks'
 import readingDetail from './readingDetail'
 import notes from './notes'
+import sentences from './sentences'
 
 export default combineReducers({
     signup,
@@ -14,5 +15,6 @@ export default combineReducers({
     book,
     mybooks,
     readingDetail,
-    notes
+    notes,
+    sentences
 });

@@ -7,9 +7,9 @@ const getCurDateTime = () => {
         date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 }
 
-const AddNote = ({
-    addNote, title, note, page, label, changeNoteTitle, changeNoteNote, labelText,
-    changeNotePage, changeNoteLabel, addFormStatus, user, book, books, changeNoteBook
+const AddSentence = ({
+    addSentence, title, sentence, page, label, changeSentenceTitle, changeSentenceSentence, labelText,
+    changeSentencePage, changeSentenceLabel, addFormStatus, user, book, books, changeSentenceBook
 }) =>  {
 
     const labelOptions = [
@@ -19,10 +19,10 @@ const AddNote = ({
     ]
 
     const bookText = books.filter((item) => item.value === book);
-    const noteParams = {
+    const sentenceParams = {
         user: user,
         title: title,
-        note: note,
+        sentence: sentence,
         page: page,
         bookParam: book,
         book_name: bookText.length ? bookText[0].text : "",
@@ -30,10 +30,10 @@ const AddNote = ({
         labelParam: label,
         datetime: getCurDateTime()
     }
-
+    
     return (
-        <Modal trigger={<Button icon><Icon name="add"/>Add Note</Button>} size='small'>
-            <Header icon='add' content={<span className="filter-header">Add Note</span>} />
+        <Modal trigger={<Button icon><Icon name="add"/>Add Sentence</Button>} size='small'>
+            <Header icon='add' content={<span className="filter-header">Add Sentence</span>} />
             <Modal.Content>
                 {addFormStatus === 1 ? <Message header='test' success /> : null}
                 {addFormStatus === 2 ? <Message header='test' negative /> : null}
@@ -47,26 +47,26 @@ const AddNote = ({
                                 }
                             </label>
                             <Form.Input type="text" name="title"
-                                value={title} onChange={(e)=> changeNoteTitle(e.target.value)}
+                                value={title} onChange={(e)=> changeSentenceTitle(e.target.value)}
                             />
                             
                         </Form.Field>
                         <Form.Field className={'form-group'}>
-                            <label htmlFor="note">
-                                Note
-                                { !note && addFormStatus === 2 &&
-                                    <div className="help-block">*Note Name is required</div>
+                            <label htmlFor="sentence">
+                                Sentence
+                                { !sentence && addFormStatus === 2 &&
+                                    <div className="help-block">*Sentence Name is required</div>
                                 }
                             </label>
-                            <Form.Input type="text" name="note"
-                                value={note} onChange={(e)=> changeNoteNote(e.target.value)}
+                            <Form.Input type="text" name="sentence"
+                                value={sentence} onChange={(e)=> changeSentenceSentence(e.target.value)}
                             />
                         </Form.Field>
                         <Form.Group widths='equal'>
                             <Form.Field className={'form-group'}>
                                 <label htmlFor="books">Book Name</label>
                                 <Dropdown placeholder='Book Name' value={book} options={books}
-                                    onChange={(e,{value})=>changeNoteBook(value)} selection
+                                    onChange={(e,{value})=>changeSentenceBook(value)} selection
                                 />
                             </Form.Field>
                             <Form.Field className={'form-group'}>
@@ -77,7 +77,7 @@ const AddNote = ({
                                     }
                                 </label>
                                 <Form.Input type="text" name="page"
-                                    value={page} onChange={(e)=> changeNotePage(e.target.value)}
+                                    value={page} onChange={(e)=> changeSentencePage(e.target.value)}
                                 />
                             </Form.Field>
                         </Form.Group>
@@ -86,7 +86,7 @@ const AddNote = ({
                                 Label
                             </label>
                             <Dropdown placeholder='Book Name' value={label} options={labelOptions}
-                                onChange={(e,{value})=>changeNoteLabel(value,labelOptions[parseInt(value)-1].text)} selection
+                                onChange={(e,{value})=>changeSentenceLabel(value,labelOptions[parseInt(value)-1].text)} selection
                             />
                         </Form.Field>
                     </Segment>
@@ -96,7 +96,7 @@ const AddNote = ({
                 <Button color='red' inverted>
                     <Icon name='remove' /> Cancel
                 </Button>
-                <Button onClick={(e) => addNote(e,noteParams)} color='green' inverted>
+                <Button onClick={(e) => addSentence(e,sentenceParams)} color='green' inverted>
                     <Icon name='checkmark' /> Add
                 </Button>
             </Modal.Actions>
@@ -104,4 +104,4 @@ const AddNote = ({
     );
 }
 
-export default AddNote
+export default AddSentence

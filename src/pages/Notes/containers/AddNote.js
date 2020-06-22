@@ -17,6 +17,7 @@ const mapStateToProps = (state) => {
         note: state.notes.note,
         page: state.notes.page,
         label: state.notes.label,
+        labelText: state.notes.labelText,
         book: state.notes.book,
         addFormStatus: state.notes.addFormStatus
     }
@@ -28,7 +29,7 @@ const mapDispatchToProps = dispatch => (
         changeNoteNote: (note) => dispatch(changeNoteNote(note)),
         changeNoteBook: (book) => dispatch(changeNoteBook(book)),
         changeNotePage: (page) => dispatch(changeNotePage(page)),
-        changeNoteLabel: (label) => dispatch(changeNoteLabel(label)),
+        changeNoteLabel: (label,labelText) => dispatch(changeNoteLabel(label,labelText)),
         dispatch
     }
 );

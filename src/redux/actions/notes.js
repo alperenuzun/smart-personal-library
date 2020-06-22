@@ -9,7 +9,8 @@ import {
     CHANGE_NOTE_LABEL,
     CHANGE_ADDFORM_STATUS,
     CHANGE_NOTE_BOOK,
-    ADD_NOTE
+    ADD_NOTE,
+    REMOVE_NOTE
 } from '../actionTypes'
 
 export const fetchNotesBegin = () => ({
@@ -58,9 +59,9 @@ export const changeNotePage = page => ({
     payload: { page }
 });
 
-export const changeNoteLabel = label => ({
+export const changeNoteLabel = (label, labelText) => ({
     type: CHANGE_NOTE_LABEL,
-    payload: { label }
+    payload: { label, labelText }
 });
 
 export const changeAddFormStatus = status => ({
@@ -79,15 +80,28 @@ export const addNote = (note) => {
             params: {
                 user: note.user,
                 title: note.title,
-                book: note.book,
+                book: note.bookParam,
                 note: note.note,
                 page: note.page,
-                label: note.label
+                label: note.labelParam
             }
         })
         .then(json => {
             dispatch(addNoteSuccess(note));
-            return json.data.success;
+        });
+    };
+}
+
+export const removeNoteSuccess = id => ({
+    type: REMOVE_NOTE,
+    payload: { id }
+});
+
+export const removeNote = (id) => {
+    return dispatch => {
+        return axios.get("http://localhost/smartlib/removeNote.php?id="+id)
+        .then(json => {
+            dispatch(removeNoteSuccess(id));
         });
     };
 }

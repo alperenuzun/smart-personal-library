@@ -14,6 +14,7 @@ const TargetList = ({targets}) => {
                       <Table.HeaderCell>Book Count</Table.HeaderCell>
                       <Table.HeaderCell>Start Date</Table.HeaderCell>
                       <Table.HeaderCell>Finish Date</Table.HeaderCell>
+                      <Table.HeaderCell>Progress</Table.HeaderCell>
                       <Table.HeaderCell>Datetime</Table.HeaderCell>
                       <Table.HeaderCell></Table.HeaderCell>
                   </Table.Row>

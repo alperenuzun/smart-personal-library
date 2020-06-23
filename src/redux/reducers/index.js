@@ -9,6 +9,7 @@ import notes from './notes'
 import sentences from './sentences'
 import userReadings from './userReadings'
 import targets from './targets'
+import home from './home'
 
 export default combineReducers({
     signup,
@@ -20,5 +21,6 @@ export default combineReducers({
     notes,
     sentences,
     userReadings,
-    targets
+    targets,
+    home
 });

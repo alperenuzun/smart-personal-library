@@ -14,6 +14,7 @@ import Sentences from '../../pages/Sentences';
 import Notes from '../../pages/Notes';
 import UserReading from '../../pages/UserReading';
 import Navbar from './Navbar';
+import PrivateRoute from './PrivateRoute';
 
 export default class App extends Component {
 
@@ -24,19 +25,21 @@ export default class App extends Component {
         <Router>
             <Navbar />
             <Switch>
-              <Route path="/book-detail/:bookId" component={BookDetail} />
-              <Route path="/reading-detail/:readingId" component={ReadingDetail} />
-              <Route path="/userreading" component={UserReading} />
-              <Route path="/notes" component={Notes} />
-              <Route path="/sentences" component={Sentences} />
-              <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
-              <Route path="/targets" component={Targets} />
-              <Route path="/mybooks" component={MyBooks} />
-              <Route path="/search" component={Search} />
-              <Route path="/profile" component={Profile} />
-              <Route path="/home" component={Home} />
-              <Route path="*" component={NoMatch} />
+                <Route path="/signup" component={Signup} />
+                <Route path="/login" component={Login} />
+
+                <PrivateRoute path="/book-detail/:bookId" component={BookDetail} />
+                <PrivateRoute path="/reading-detail/:readingId" component={ReadingDetail} />
+                <PrivateRoute path="/userreading" component={UserReading} />
+                <PrivateRoute path="/notes" component={Notes} />
+                <PrivateRoute path="/sentences" component={Sentences} />
+                <PrivateRoute path="/targets" component={Targets} />
+                <PrivateRoute path="/mybooks" component={MyBooks} />
+                <PrivateRoute path="/search" component={Search} />
+                <PrivateRoute path="/profile" component={Profile} />
+                <PrivateRoute path="/home" component={Home} />
+                
+                <Route path="/" component={NoMatch} />
             </Switch>
         </Router>
       </div>

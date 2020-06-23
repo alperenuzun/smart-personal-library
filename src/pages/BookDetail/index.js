@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import jwtDecode from 'jwt-decode'
 import { Item, Grid, Header, Button, Icon } from 'semantic-ui-react'
 import './style.css'
@@ -14,7 +14,7 @@ class Book extends Component {
   }
 
   render(){
-    const { error, loading, book, addReading, user, inMyBooks } = this.props;
+    const { error, loading, book, addReading, user, inMyBooks, readingNo } = this.props;
     if (error) {
         return <div style={{marginTop:'5em'}}>Error! {error.message}</div>;
     }
@@ -22,12 +22,6 @@ class Book extends Component {
     if (loading) {
         return <div style={{marginTop:'5em'}}>Loading Book Details...</div>;
     }
-
-    /* const statusOptions = [
-        { key: '1', value: '1', text: 'Will Read' },
-        { key: '2', value: '2', text: 'Is Reading' },
-        { key: '3', value: '3', text: 'Was Read' }
-    ] */
     
     return book && book.id ? (
       <Grid padded columns={1}>
@@ -65,7 +59,10 @@ class Book extends Component {
                                 >
                                     <Icon name='add' /> Add My Books
                                 </Button>
-                                : null
+                                : 
+                                <Button as={Link} to={"/reading-detail/"+readingNo} icon>
+                                    <Icon name='arrow right' />  Go to Reading Detail
+                                </Button>
                             }
                         </Grid.Column>
                     </Grid>
@@ -93,7 +90,8 @@ const mapStateToProps = state => {
       book: state.book.item,
       loading: state.book.loading,
       error: state.book.error,
-      inMyBooks: state.book.inMyBooks
+      inMyBooks: state.book.inMyBooks,
+      readingNo: state.book.readingNo
   };
 }
 

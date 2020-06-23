@@ -9,7 +9,8 @@ const initialState = {
     item: {},
     loading: false,
     error: null,
-    inMyBooks: false
+    inMyBooks: false,
+    readingNo: 0
 };
 
 export default function book(
@@ -29,7 +30,8 @@ export default function book(
                 ...state,
                 loading: false,
                 item: action.payload.item,
-                inMyBooks: action.payload.item.inMyBooks
+                inMyBooks: action.payload.item.inMyBooks,
+                readingNo: action.payload.item.readingNo
             };
 
         case FETCH_BOOK_FAILURE:
@@ -43,7 +45,8 @@ export default function book(
         case ADD_READING:
             return {
                 ...state,
-                inMyBooks: true
+                inMyBooks: true,
+                readingNo: 0
             };
 
         default:

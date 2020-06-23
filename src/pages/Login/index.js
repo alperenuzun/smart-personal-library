@@ -40,7 +40,7 @@ class Login extends Component {
                     <Form onSubmit={(e) => this.handleSubmit(e)} size='large'>
                         <Segment stacked>
                             <Form.Input fluid icon='user' iconPosition='left'
-                                placeholder="Username" onChange={this.handleChange} required name="username" />
+                                placeholder="Username" onChange={(e)=>this.handleChange(e)} required name="username" />
                             <Form.Input
                                 fluid
                                 icon='lock'

@@ -64,7 +64,12 @@ const AddNote = ({
                         </Form.Field>
                         <Form.Group widths='equal'>
                             <Form.Field className={'form-group'}>
-                                <label htmlFor="books">Book Name</label>
+                                <label htmlFor="books">
+                                    Book Name
+                                    { !book && addFormStatus === 2 &&
+                                        <div className="help-block">*Page is required</div>
+                                    }
+                                </label>
                                 <Dropdown placeholder='Book Name' value={book} options={books}
                                     onChange={(e,{value})=>changeNoteBook(value)} selection
                                 />

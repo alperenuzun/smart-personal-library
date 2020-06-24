@@ -52,7 +52,7 @@ class Signup extends React.Component {
             return <Redirect to="/signup-success" />;
 
         return (
-            <Grid textAlign='center' verticalAlign='middle'>
+            <Grid textAlign='center' verticalAlign='middle' style={{ height: '90vh' }}>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Segment >
                         <Header as='h2' color='teal' textAlign='center'>

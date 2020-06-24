@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => (
     Object.assign({}, ownProps, stateProps, dispatchProps, {
         addNote: (e, note) => {
             e.preventDefault();
-            if(stateProps.title && stateProps.note && stateProps.page){
+            if(stateProps.title && stateProps.note && stateProps.page && stateProps.book){
                 dispatchProps.dispatch(changeAddFormStatus(1))
                 dispatchProps.dispatch(addNote(note))
             }

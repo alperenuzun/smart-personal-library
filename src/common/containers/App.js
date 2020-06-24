@@ -14,7 +14,7 @@ import Sentences from '../../pages/Sentences';
 import Notes from '../../pages/Notes';
 import UserReading from '../../pages/UserReading';
 import Navbar from './Navbar';
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute from '../components/PrivateRoute';
 
 export default class App extends Component {
 

@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => (
     Object.assign({}, ownProps, stateProps, dispatchProps, {
         addSentence: (e, sentence) => {
             e.preventDefault();
-            if(stateProps.title && stateProps.sentence && stateProps.page){
+            if(stateProps.title && stateProps.sentence && stateProps.page && stateProps.book){
                 dispatchProps.dispatch(changeAddFormStatus(1))
                 dispatchProps.dispatch(addSentence(sentence))
             }

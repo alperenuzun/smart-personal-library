@@ -12,33 +12,43 @@ class Navbar extends Component {
     
     return (
         <Menu icon='labeled' inverted stackable size='small'>
-            <Menu.Item as={Link} to="/home" name='home' active={activeItem === 'home'}>
-                <Icon name='home' />
-                Home
-            </Menu.Item>
-            <Menu.Item as={Link} to="/mybooks" name='mybooks' active={activeItem === 'mybooks'}>
-                <Icon name='book' />My Books
-            </Menu.Item>
-            <Menu.Item as={Link} to="/targets" name='targets' active={activeItem === 'targets'}>
-                <Icon name='target' />Targets
-            </Menu.Item>
-            <Menu.Item as={Link} to="/search" name='search' active={activeItem === 'search'}>
-                <Icon name='search' />Search
-            </Menu.Item>
-            <Menu.Item as={Link} to="/sentences" name='sentences' active={activeItem === 'sentences'}>
-                <Icon name='heart' />Sentences
-            </Menu.Item>
-            <Menu.Item as={Link} to="/notes" name='sentences' active={activeItem === 'notes'}>
-                <Icon name='bookmark' />Notes
-            </Menu.Item>
-            <Menu.Item as={Link} to="/userreading" name='userreading' active={activeItem === 'userreading'}>
-                <Icon name='bookmark' />My Reading
-            </Menu.Item>
+            {
+                localStorage.getItem("jwtToken") ? 
+                <Menu.Menu position="left">
+                    <Menu.Item as={Link} to="/home" name='home' active={activeItem === 'home'}>
+                        <Icon name='home' />
+                        Home
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/mybooks" name='mybooks' active={activeItem === 'mybooks'}>
+                        <Icon name='book' />My Books
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/targets" name='targets' active={activeItem === 'targets'}>
+                        <Icon name='target' />Targets
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/search" name='search' active={activeItem === 'search'}>
+                        <Icon name='search' />Search
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/sentences" name='sentences' active={activeItem === 'sentences'}>
+                        <Icon name='heart' />Sentences
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/notes" name='sentences' active={activeItem === 'notes'}>
+                        <Icon name='bookmark' />Notes
+                    </Menu.Item>
+                    <Menu.Item as={Link} to="/userreading" name='userreading' active={activeItem === 'userreading'}>
+                        <Icon name='bookmark' />My Reading
+                    </Menu.Item>
+                </Menu.Menu>
+                : null
+            }
 
             <Menu.Menu position='right' style={{padding: '7px 0'}}>
-                <Menu.Item as={Link} to="/profile" name='profile' active={activeItem === 'profile'}>
-                    <Icon name='user' />Profile
-                </Menu.Item>
+                {
+                    localStorage.getItem("jwtToken") ?
+                    <Menu.Item as={Link} to="/profile" name='profile' active={activeItem === 'profile'}>
+                        <Icon name='user' />Profile
+                    </Menu.Item>
+                    : null
+                }
               { (user.length !== 0 && user !== "" && user !== undefined) ? 
                 <Menu.Item as={Link} to="/login">
                     <Icon name='sign-out' />Logout - { user }
